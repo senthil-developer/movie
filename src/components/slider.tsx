@@ -29,7 +29,7 @@ export const Slider = ({ children, className }: SliderProps) => {
   };
 
   return (
-    <div className={cn("w-full overflow-hidden relative", className)}>
+    <div className="relative">
       <Button pos={"left"} onClick={handlePrev} aria-label="Previous">
         &lt;
         <span className="sr-only">Previous Button</span>
@@ -38,11 +38,13 @@ export const Slider = ({ children, className }: SliderProps) => {
         &gt;
         <span className="sr-only">Next Button</span>
       </Button>
-      <div
-        ref={containerRef}
-        className="flex gap-4 h-fit container w-full overflow-x-auto scroll-smooth scrollbar-none scrollbar-webkit-none"
-      >
-        {children}
+      <div className={cn("w-full overflow-hidden", className)}>
+        <div
+          ref={containerRef}
+          className="flex gap-4 h-fit w-full overflow-x-auto scroll-smooth scrollbar-none scrollbar-webkit-none"
+        >
+          {children}
+        </div>
       </div>
     </div>
   );
@@ -57,8 +59,8 @@ const Button: React.FC<ButtonProps> = ({ children, pos, ...props }) => {
   return (
     <button
       className={cn(
-        "absolute top-[50%] rounded-full translate-y-[-50%] z-10 disabled:cursor-not-allowed disabled:opacity-50 size-10 bg-black",
-        pos === "left" ? "left-[1%]" : "right-[1%]"
+        "absolute top-[50%] rounded-full translate-y-[-50%] z-10 disabled:cursor-not-allowed disabled:opacity-50 size-10 bg-gray-300/70 text-black max-md:hidden",
+        pos === "left" ? "left-[0%]" : "right-[0%]"
       )}
       {...props}
     >

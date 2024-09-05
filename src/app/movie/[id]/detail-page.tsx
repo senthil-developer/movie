@@ -2,10 +2,11 @@
 
 import { useFetch } from "@/hooks/useFetch";
 import React from "react";
-import { CardType, Movie, MovieCredits } from "../../../../types";
+import { CardsType, Movie, MovieCredits } from "../../../../types";
 import Image from "next/image";
 import { formatAmt, getImg, hourToMins } from "@/lib/utils";
 import { Slider } from "@/components/slider";
+import Cards from "@/components/cards";
 
 interface DetailPageProps {
   id: string;
@@ -13,6 +14,7 @@ interface DetailPageProps {
 
 export const DetailPage = ({ id }: DetailPageProps) => {
   const { data: detail, error, isLoading } = useFetch<Movie>({ path: id });
+
   const {
     data: credit,
     error: creditError,
@@ -34,10 +36,10 @@ export const DetailPage = ({ id }: DetailPageProps) => {
   return (
     <>
       <div
-        className={`w-full h-[50rem] flex  flex-col justify-end relative after:bg-gradient-to-top after:size-full after:absolute after:inset-0 after:z-0 `}
+        className={`w-full h-96 lg:h-[50rem] flex  flex-col justify-end relative after:bg-gradient-to-top after:size-full after:absolute after:inset-0 after:z-0 `}
         style={backgroundStyle}
       >
-        <div className="flex items-end gap-20 z-10 m-5">
+        <div className="flex items-end gap-5 md:gap-20 z-10 m-5">
           <div className="w-48 aspect-[1/1.5] relative">
             <Image
               src={poster}
@@ -46,33 +48,44 @@ export const DetailPage = ({ id }: DetailPageProps) => {
               className="rounded-lg object-top"
             />
           </div>
-          <div className="w-[80%] space-y-4">
-            <h1 className="text-4xl font-bold text-white">{detail?.title}</h1>
-            <p className="text-lg text-gray-300">{detail?.overview}</p>
+          <div className="w-[80%] space-y-4 max-md:h-24">
+            <h1 className="text-lg lg:text-4xl font-bold text-white truncate ">
+              {detail?.title}
+            </h1>
+            <p className="md:text-lg text-gray-300   max-md:line-clamp-2">
+              {detail?.overview}
+            </p>
           </div>
         </div>
       </div>
 
-      <div className="flex flex-wrap gap-3  w-[80%]">
-        <h3>
-          Release Date: <span className="text-gray-300">{date}</span>
-        </h3>
-        <h3>Run Time : {hourToMins(detail?.runtime!)}</h3>
-        <h3>Budget : &#36;{formatAmt(detail?.budget!)} (estimated)</h3>
-        <h3>Revenue : &#36; {formatAmt(detail?.revenue!)}</h3>
+      <div className="flex flex-wrap gap-3  md:w-[80%] justify-center *:flex *:gap-4 my-8 mx-auto items-center">
+        <h3>Release Date: {date}</h3>|
+        <h3>Run Time : {hourToMins(detail?.runtime!)}</h3>|
+        <h3>Revenue : &#36; {formatAmt(detail?.revenue!)}</h3>|
+        <h3>Status : {detail?.status}</h3>|
+        <div className="flex gap-5 items-center">
+          <h3>Genres :</h3>
+          <h3 className="flex flex-wrap gap-2 *:p-1 *:px-2 *:rounded-full *:bg-slate-500 cursor-pointer">
+            {detail?.genres.map((genre) => (
+              <span key={genre.id}>{genre.name}</span>
+            ))}
+          </h3>
+        </div>
       </div>
       <h2 className="text-3xl font-semibold mb-4">Top Cast</h2>
       <Slider className={"w-full"}>
         {topCast?.map((cast) => (
           <div key={cast.id} className="flex flex-col items-center">
-            <div className="w-36 aspect-square relative rounded-full overflow-hidden">
+            <div className="w-[9.4rem] aspect-square relative rounded-full items-center flex overflow-hidden">
               <Image
                 src={getImg(cast?.profile_path, "w185")}
-                alt="cast"
+                alt={cast.name}
                 fill
-                className="object-cover"
+                className="object-[20%_20%] rounded-full object-cover"
               />
             </div>
+
             <div className="text-center w-36 space-y-[0.1rem]">
               <p className="text-sm text-gray-300 truncate whitespace-nowrap">
                 {cast.name}
@@ -84,6 +97,12 @@ export const DetailPage = ({ id }: DetailPageProps) => {
           </div>
         ))}
       </Slider>
+
+      <h2 className="text-3xl font-semibold my-4">Similar Movies</h2>
+      <Cards path={`${id}/similar`} type="movie" />
+
+      <h2 className="text-3xl font-semibold my-4">Recommended Movies</h2>
+      <Cards path={`${id}/recommendations`} type="movie" />
     </>
   );
 };

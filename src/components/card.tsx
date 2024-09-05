@@ -11,7 +11,7 @@ interface CardProps {
 const Card = ({ item, type }: CardProps) => {
   return (
     <div className="flex flex-col ">
-      <Link href={`${type}/${item.id}`}>
+      <Link href={`/${type}/${item.id}`}>
         <div className="relative w-[12.5rem] h-72">
           <Image
             src={`https://image.tmdb.org/t/p/w500/${
