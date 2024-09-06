@@ -10,7 +10,7 @@ export async function fetchData({ path, params, revalidate }: Props) {
     { next: { revalidate: revalidate ? revalidate : 3600 } }
   );
   if (!response.ok) {
-    throw new Error("Failed to fetch data");
+    throw new Error("failed to fetch data");
   }
   const data = await response.json();
   return data;

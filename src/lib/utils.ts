@@ -1,5 +1,6 @@
 import { type ClassValue, clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
+import { Person } from "../../types";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -36,4 +37,35 @@ export const formatDate = (date: string) => {
 
 export const videoURL = (id: string) => {
   return `https://www.youtube.com/watch?v=${id}`;
+};
+
+export const getDept = (person: Person) => {
+  switch (person?.known_for_department) {
+    case "Acting":
+      return person?.gender === 2 ? "Actress" : "Actor";
+    case "Writing":
+      return "Writer";
+    case "Directing":
+      return "Director";
+    case "Editing":
+      return "Editor";
+    case "Production":
+      return "Producer";
+    case "Sound":
+      return "Music Composer";
+    case "Camera":
+      return "Cinematographer";
+    case "Crew":
+      return "Stunts";
+    case "Art":
+      return "Art Department";
+    case "Visual Effects":
+      return "VFX Artist";
+    case "Lighting":
+      return "Lighting Artist";
+    case "Costume & Make-Up":
+      return "Costume Designer";
+    default:
+      return "";
+  }
 };
