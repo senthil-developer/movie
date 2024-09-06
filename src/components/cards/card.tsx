@@ -13,7 +13,7 @@ const Card = ({ item, type }: CardProps) => {
   return (
     <div className="flex flex-col ">
       <Link href={`/${type}/${item.id}`}>
-        <div className="relative w-[12.5rem] h-72">
+        <div className="relative w-[11rem] aspect-[1.2/1.7]">
           <Image
             src={`https://image.tmdb.org/t/p/w500/${
               item.poster_path ? item.poster_path : item.profile_path
@@ -26,7 +26,7 @@ const Card = ({ item, type }: CardProps) => {
             blurDataURL="/placeholder.svg"
           />
         </div>
-        <div className="flex flex-col gap-1 w-[12.5rem]">
+        <div className="flex flex-col gap-1 w-[11rem]">
           <p className="truncate">{item.title ? item.title : item.name}</p>
           <p className="truncate">
             {formatDate(item.release_date || item.first_air_date)}
