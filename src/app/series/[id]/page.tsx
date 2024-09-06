@@ -4,10 +4,10 @@ import { getImg } from "@/lib/utils";
 import { CardType, Params } from "../../../../types";
 
 export async function generateMetadata({ params }: Params) {
-  const res = (await fetchData({ path: `movie/${params.id}` })) as CardType;
+  const res = (await fetchData({ path: `tv/${params.id}` })) as CardType;
   const url = getImg(res.poster_path, "original");
   return {
-    title: `${res.title}`,
+    title: `${res.name}`,
     description: res.overview,
     openGraph: {
       images: [url],
@@ -18,7 +18,7 @@ export async function generateMetadata({ params }: Params) {
 const Page = ({ params }: Params) => {
   return (
     <div className="w-full">
-      <DetailPage id={"movie/" + params.id} type="movie" />
+      <DetailPage id={"tv/" + params.id} type="series" />
     </div>
   );
 };

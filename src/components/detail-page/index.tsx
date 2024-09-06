@@ -2,7 +2,7 @@
 
 import { useFetch } from "@/hooks/useFetch";
 import React from "react";
-import { CardsType, Movie, MovieCredits, Videos } from "../../../../types";
+import { CardsType, Movie, MovieCredits, Videos } from "@../../../types";
 import Image from "next/image";
 import {
   formatAmt,
@@ -17,9 +17,10 @@ import Link from "next/link";
 
 interface DetailPageProps {
   id: string;
+  type: "movie" | "series" | "person";
 }
 
-export const DetailPage = ({ id }: DetailPageProps) => {
+export const DetailPage = ({ id, type }: DetailPageProps) => {
   const { data: detail, error, isLoading } = useFetch<Movie>({ path: id });
 
   const {
@@ -34,8 +35,6 @@ export const DetailPage = ({ id }: DetailPageProps) => {
     isLoading: isVideoLoading,
   } = useFetch<Videos>({ path: `${id}/videos` });
 
-  console.log(videos?.results[0].key);
-
   const poster = getImg(detail?.poster_path, "w500");
 
   const backgroundStyle = {
@@ -46,9 +45,10 @@ export const DetailPage = ({ id }: DetailPageProps) => {
 
   const topCast = credit?.cast.slice(0, 20);
 
-  const date = formatDate(detail?.release_date!);
+  const date = formatDate(detail?.release_date || detail?.first_air_date!);
   const trailer = videos?.results.find((video) => video.type === "Trailer");
   const teaser = videos?.results.find((video) => video.type === "Teaser");
+
   return (
     <>
       <div
@@ -66,7 +66,7 @@ export const DetailPage = ({ id }: DetailPageProps) => {
           </div>
           <div className="w-[80%] space-y-4 max-md:h-24">
             <h1 className="text-lg lg:text-4xl font-bold text-white truncate ">
-              {detail?.title}
+              {detail?.title ? detail.title : detail?.name}
             </h1>
 
             <button className="p-1 px-3 bg-red-400 rounded-full ">
@@ -126,11 +126,11 @@ export const DetailPage = ({ id }: DetailPageProps) => {
         ))}
       </Slider>
 
-      <h2 className="text-3xl font-semibold my-4">Similar Movies</h2>
-      <Cards path={`${id}/similar`} type="movie" />
+      <h2 className="text-3xl font-semibold my-4">Similar {type}</h2>
+      <Cards path={`${id}/similar`} type={type} />
 
-      <h2 className="text-3xl font-semibold my-4">Recommended Movies</h2>
-      <Cards path={`${id}/recommendations`} type="movie" />
+      <h2 className="text-3xl font-semibold my-4">Recommended {type} </h2>
+      <Cards path={`${id}/recommendations`} type={type} />
     </>
   );
 };

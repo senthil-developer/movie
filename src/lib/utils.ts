@@ -28,3 +28,12 @@ export function formatAmt(amount: string | number) {
   const formatted = (amount / scale).toFixed(2);
   return formatted.replace(/\.00$/, "") + suffix;
 }
+
+export const formatDate = (date: string) => {
+  if (!date) return "";
+  return new Date(date).toLocaleDateString("en-GB");
+};
+
+export const videoURL = (id: string) => {
+  return `https://www.youtube.com/watch?v=${id}`;
+};

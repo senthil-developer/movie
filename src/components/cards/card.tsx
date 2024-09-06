@@ -1,7 +1,8 @@
 import React from "react";
-import { CardType } from "../../types";
+import { CardType } from "../../../types";
 import Image from "next/image";
 import Link from "next/link";
+import { formatDate } from "@/lib/utils";
 
 interface CardProps {
   item: CardType;
@@ -24,6 +25,12 @@ const Card = ({ item, type }: CardProps) => {
             placeholder="blur"
             blurDataURL="/placeholder.svg"
           />
+        </div>
+        <div className="flex flex-col gap-1 w-[12.5rem]">
+          <p className="truncate">{item.title ? item.title : item.name}</p>
+          <p className="truncate">
+            {formatDate(item.release_date || item.first_air_date)}
+          </p>
         </div>
       </Link>
     </div>

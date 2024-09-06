@@ -9,8 +9,8 @@ import React, {
 } from "react";
 import Card from "./card";
 import { useFetch } from "@/hooks/useFetch";
-import { CardsType, CardType } from "../../types";
-import { Slider } from "./slider";
+import { CardsType, CardType } from "@/../types";
+import { Slider } from "../slider";
 
 interface type {
   path: string;
@@ -19,7 +19,6 @@ interface type {
 
 const Cards = ({ path, type }: type) => {
   const { data, isLoading, error } = useFetch<CardsType>({ path: path });
-  data as CardsType;
 
   if (error) {
     return <div>Error: {error.message}</div>;

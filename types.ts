@@ -9,6 +9,7 @@ export interface CardType {
   popularity: number;
   poster_path: string;
   release_date: string;
+  first_air_date: string;
   title: string;
   video: boolean;
   vote_average: number;
@@ -103,13 +104,39 @@ export interface Movie {
   production_companies: ProductionCompany[];
   production_countries: ProductionCountry[];
   release_date: string;
+  first_air_date: string;
   revenue: number;
   runtime: number;
   spoken_languages: SpokenLanguage[];
   status: string;
   tagline?: string;
   title: string;
+  name: string;
   video: boolean;
   vote_average: number;
   vote_count: number;
+}
+
+export interface VideoMetadata {
+  id: string;
+  iso_3166_1: string;
+  iso_639_1: string;
+  key: string;
+  name: string;
+  official: boolean;
+  published_at: string;
+  site: string;
+  size: number;
+  type: string;
+}
+
+export interface Videos {
+  id: number;
+  results: VideoMetadata[];
+}
+
+export interface Params {
+  params: {
+    id: string;
+  };
 }
