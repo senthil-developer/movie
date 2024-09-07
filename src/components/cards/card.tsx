@@ -26,9 +26,9 @@ const Card = ({ item, type }: CardProps) => {
             blurDataURL="/placeholder.svg"
           />
         </div>
-        <div className="flex flex-col gap-1 w-[11rem]">
+        <div className="flex flex-col gap-0.5 w-[11rem]">
           <p className="truncate">{item.title ? item.title : item.name}</p>
-          <p className="truncate">
+          <p className="truncate text-gray-300/70 text-sm">
             {formatDate(item.release_date || item.first_air_date)}
           </p>
         </div>

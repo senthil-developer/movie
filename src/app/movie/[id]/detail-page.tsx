@@ -34,8 +34,6 @@ export const DetailPage = ({ id }: DetailPageProps) => {
     isLoading: isVideoLoading,
   } = useFetch<Videos>({ path: `${id}/videos` });
 
-  console.log(videos?.results[0].key);
-
   const poster = getImg(detail?.poster_path, "w500");
 
   const backgroundStyle = {

@@ -38,13 +38,13 @@ export const DetailPage = ({ id, type }: DetailPageProps) => {
 
       <Info detail={detail!} type={type} />
 
-      <h2 className="text-3xl font-semibold mb-4">Top Cast</h2>
+      <h2 className="title">Top Cast</h2>
       <Cast id={id} />
 
-      <h2 className="text-3xl font-semibold my-4">Similar {type}</h2>
+      <h2 className="title">Similar {type}</h2>
       <Cards path={`${id}/similar`} type={type} />
 
-      <h2 className="text-3xl font-semibold my-4">Recommended {type} </h2>
+      <h2 className="title">Recommended {type} </h2>
       <Cards path={`${id}/recommendations`} type={type} />
     </>
   );

@@ -1,7 +1,16 @@
-import React from "react";
+import { Explore } from "@/components/explore";
+import { Metadata } from "next";
 
-const page = () => {
-  return <div>page</div>;
+export const metadata: Metadata = {
+  title: "Series",
 };
 
-export default page;
+const series = () => {
+  return (
+    <div className="flex h-full w-full flex-col items-center justify-center">
+      <Explore type="tv" />
+    </div>
+  );
+};
+
+export default series;

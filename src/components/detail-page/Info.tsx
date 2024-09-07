@@ -25,9 +25,9 @@ export const Info = ({ detail, type }: InfoProps) => {
         </>
       )}
       <h3>Status : {detail?.status}</h3>|
-      <div className="flex gap-5 items-center">
-        <h3>Genres :</h3>
-        <h3 className="flex flex-wrap gap-2 *:p-1 *:px-3 *:rounded-full *:border *:border-red-500 cursor-pointer">
+      <div className="flex gap-5 md:items-center">
+        <h3 className="whitespace-nowrap">Genres :</h3>
+        <h3 className="flex flex-wrap gap-2 *:p-1 *:px-2 *:rounded-full *:border *:border-red-500 cursor-pointer">
           {detail?.genres.map((genre) => (
             <span key={genre.id}>{genre.name}</span>
           ))}

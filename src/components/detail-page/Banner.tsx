@@ -38,8 +38,8 @@ export const Banner = ({ detail, videos }: BannerProps) => {
             className="rounded-lg object-top"
           />
         </div>
-        <div className="w-[80%] space-y-4 max-md:h-24">
-          <h1 className="text-lg lg:text-4xl font-bold text-white truncate ">
+        <div className="w-[60%] md:w-[80%] space-y-4 max-md:h-48">
+          <h1 className="text-xl lg:text-4xl font-bold text-white ">
             {detail?.title ? detail.title : detail?.name}
           </h1>
 
@@ -56,7 +56,7 @@ export const Banner = ({ detail, videos }: BannerProps) => {
             </button>
           )}
 
-          <p className="md:text-lg text-gray-300   max-md:line-clamp-2">
+          <p className="lg:text-lg text-gray-300  max-md:line-clamp-3">
             {detail?.overview}
           </p>
         </div>

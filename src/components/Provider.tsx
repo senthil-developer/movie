@@ -2,6 +2,8 @@
 
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import React, { PropsWithChildren } from "react";
+import { Navbar } from "./navbar";
+import Image from "next/image";
 
 const Provider: React.FC<PropsWithChildren> = ({ children }) => {
   const queryClient = new QueryClient({
@@ -14,7 +16,12 @@ const Provider: React.FC<PropsWithChildren> = ({ children }) => {
   });
   return (
     <QueryClientProvider client={queryClient}>
-      <main className="max-w-7xl mx-auto ">{children}</main>
+      <header className="">
+        <Navbar
+          className={"max-w-7xl mx-auto flex justify-evenly fixed top-0 w-full"}
+        />
+      </header>
+      <main className="max-w-7xl mx-auto max-xl:px-4">{children}</main>
     </QueryClientProvider>
   );
 };

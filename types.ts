@@ -16,6 +16,7 @@ export interface CardType {
   vote_count: number;
   profile_path: string;
   name: string;
+  media_type: string;
 }
 
 export interface CardsType {

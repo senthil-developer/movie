@@ -42,7 +42,7 @@ export const videoURL = (id: string) => {
 export const getDept = (person: Person) => {
   switch (person?.known_for_department) {
     case "Acting":
-      return person?.gender === 2 ? "Actress" : "Actor";
+      return person?.gender === 1 ? "Actress" : "Actor";
     case "Writing":
       return "Writer";
     case "Directing":

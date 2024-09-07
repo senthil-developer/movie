@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useFetch } from "@/hooks/useFetch";
 import { MovieCredits } from "../../../types";
 import { getImg } from "@/lib/utils";
+import Link from "next/link";
 
 export const Cast = ({ id }: { id: string }) => {
   const {
@@ -32,16 +33,18 @@ export const Cast = ({ id }: { id: string }) => {
       )}
       {topCast?.map((cast) => (
         <div key={cast.id} className="flex flex-col items-center">
-          <div className="w-[9.4rem] aspect-square relative rounded-full items-center flex overflow-hidden">
-            <Image
-              src={getImg(cast?.profile_path, "w185")}
-              alt={cast.name}
-              fill
-              className="object-[20%_20%] rounded-full object-cover"
-            />
-          </div>
+          <Link href={`/person/${cast.id}`}>
+            <div className="w-[8rem] aspect-square relative rounded-full items-center flex overflow-hidden">
+              <Image
+                src={getImg(cast?.profile_path, "w185")}
+                alt={cast.name}
+                fill
+                className="object-[20%_20%] rounded-full object-cover"
+              />
+            </div>
+          </Link>
 
-          <div className="text-center w-36 space-y-[0.1rem]">
+          <div className="text-center w-[8rem] space-y-[0.1rem]">
             <p className="text-sm text-gray-300 truncate whitespace-nowrap">
               {cast.name}
             </p>

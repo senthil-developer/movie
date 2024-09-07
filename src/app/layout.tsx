@@ -12,9 +12,9 @@ export const metadata = {
   },
   description: "Latest movies , series , trending movies,person,history",
   keywords:
-    "movie,series,trending,person,history,movieuniverse,movieuniverse.vercel.app,latest movies,latest series,latest people,actor history,actress history,",
+    "movie,series,trending,person,history,movie universe,movie universe.vercel.app,latest movies,latest series,latest people,actor history,actress history,",
   openGraph: {
-    images: [`${process.env.SITE_URL}/logo1.png`],
+    images: [`/logo1.png`],
   },
 };
 
@@ -25,7 +25,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={inter.className + " max-w-7xl mx-auto"}>
         <Provider>{children}</Provider>
       </body>
     </html>
