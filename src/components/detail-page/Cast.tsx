@@ -5,6 +5,7 @@ import { useFetch } from "@/hooks/useFetch";
 import { MovieCredits } from "../../../types";
 import { getImg } from "@/lib/utils";
 import Link from "next/link";
+import { Animate } from "../animate";
 
 export const Cast = ({ id }: { id: string }) => {
   const {
@@ -32,27 +33,29 @@ export const Cast = ({ id }: { id: string }) => {
         </div>
       )}
       {topCast?.map((cast) => (
-        <div key={cast.id} className="flex flex-col items-center">
-          <Link href={`/person/${cast.id}`}>
-            <div className="w-[8rem] aspect-square relative rounded-full items-center flex overflow-hidden">
-              <Image
-                src={getImg(cast?.profile_path, "w185")}
-                alt={cast.name}
-                fill
-                className="object-[20%_20%] rounded-full object-cover"
-              />
-            </div>
-          </Link>
+        <Animate key={cast.id} animatedFrom="x">
+          <div className="flex flex-col items-center">
+            <Link href={`/person/${cast.id}`}>
+              <div className="w-[8rem] aspect-square relative rounded-full items-center flex overflow-hidden">
+                <Image
+                  src={getImg(cast?.profile_path, "w185")}
+                  alt={cast.name}
+                  fill
+                  className="object-[20%_20%] rounded-full object-cover"
+                />
+              </div>
+            </Link>
 
-          <div className="text-center w-[8rem] space-y-[0.1rem]">
-            <p className="text-sm text-gray-300 truncate whitespace-nowrap">
-              {cast.name}
-            </p>
-            <p className="text-sm text-gray-600 truncate whitespace-nowrap">
-              {cast.character}
-            </p>
+            <div className="text-center w-[8rem] space-y-[0.1rem]">
+              <p className="text-sm text-gray-300 truncate whitespace-nowrap">
+                {cast.name}
+              </p>
+              <p className="text-sm text-gray-600 truncate whitespace-nowrap">
+                {cast.character}
+              </p>
+            </div>
           </div>
-        </div>
+        </Animate>
       ))}
     </Slider>
   );

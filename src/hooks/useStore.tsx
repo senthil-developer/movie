@@ -1,17 +1,15 @@
 import create from "zustand";
 
-// Define a type for the individual data objects
 interface DataItem {
-  id: string; // or number, depending on your use case
+  id: string;
 }
 
-// Define types for the state
 interface StoreState {
   data: DataItem[];
   loadData: () => void;
   addItem: (item: DataItem) => void;
   clearData: () => void;
-  getItem: (id: string) => string | null;
+  getItem: (id: string) => boolean;
 }
 
 const useFav = create<StoreState>((set) => ({
@@ -33,9 +31,7 @@ const useFav = create<StoreState>((set) => ({
   getItem: (id) => {
     const data = localStorage.getItem("data");
 
-    return data
-      ? JSON.parse(data).find((item: DataItem) => item.id === id)
-      : null;
+    return data && JSON.parse(data).find((item: DataItem) => item.id === id);
   },
 }));
 

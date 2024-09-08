@@ -15,12 +15,13 @@ export const Explore = ({ type }: { type: "movie" | "tv" | "person" }) => {
 
   useEffect(() => {
     if (inView) {
-      fetchData({ path: `discover/${type}`, params: `page=${pageNum}` }).then(
-        (res) => {
-          setPage([...page, ...res.results]);
-          pageNum++;
-        }
-      );
+      fetchData({
+        path: type === "person" ? "person/popular" : `discover/${type}`,
+        params: `page=${pageNum}`,
+      }).then((res) => {
+        setPage([...page, ...res.results]);
+        pageNum++;
+      });
     }
   }, [inView, page]);
   return (
@@ -33,6 +34,7 @@ export const Explore = ({ type }: { type: "movie" | "tv" | "person" }) => {
                 key={i}
                 item={item}
                 type={type === "tv" ? "person" : type}
+                animateFrom="y"
               />
             );
           })}

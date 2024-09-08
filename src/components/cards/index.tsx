@@ -15,6 +15,7 @@ import { Slider } from "../slider";
 interface type {
   path: string;
   type: "movie" | "series" | "person";
+  animatedFrom: "x" | "y";
 }
 
 const Cards = ({ path, type }: type) => {
@@ -38,7 +39,7 @@ const Cards = ({ path, type }: type) => {
         </div>
       )}
       {data?.results.map((item: CardType) => (
-        <Card key={item.id} item={item} type={type} />
+        <Card key={item.id} item={item} type={type} animateFrom="x" />
       ))}
     </Slider>
   );

@@ -69,3 +69,18 @@ export const getDept = (person: Person) => {
       return "";
   }
 };
+
+export const getVariants = (animateFrom: "x" | "y") => {
+  switch (animateFrom) {
+    case "x":
+      return {
+        hidden: { x: "30%", opacity: 0, filter: "blur(20px)" },
+        visible: { x: 0, opacity: 1, filter: "blur(0px)" },
+      };
+    case "y":
+      return {
+        hidden: { y: "30%", opacity: 0, filter: "blur(20px)" },
+        visible: { y: 0, opacity: 1, filter: "blur(0px)" },
+      };
+  }
+};

@@ -1,12 +1,8 @@
 "use client";
 
+import useFav from "@/hooks/useStore";
 import { cn } from "@/lib/utils";
-import React, {
-  ButtonHTMLAttributes,
-  useEffect,
-  useRef,
-  useState,
-} from "react";
+import React, { ButtonHTMLAttributes, MouseEvent, useRef } from "react";
 
 interface SliderProps {
   children: React.ReactNode;
@@ -27,6 +23,15 @@ export const Slider = ({ children, className }: SliderProps) => {
       containerRef.current.scrollLeft += containerRef.current.clientWidth / 2;
     }
   };
+  const { getItem, addItem } = useFav();
+  const handleOnClick = (e: MouseEvent<HTMLDivElement>) => {
+    const target = e.target as HTMLElement;
+    if (!target.getAttribute("data-id")) return;
+    const id = target.getAttribute("data-id");
+    if (!getItem(id!)) {
+      addItem({ id: id! });
+    }
+  };
 
   return (
     <div className="relative">
@@ -42,6 +47,7 @@ export const Slider = ({ children, className }: SliderProps) => {
         <div
           ref={containerRef}
           className="flex gap-4 h-fit w-full overflow-x-auto scroll-smooth scrollbar-none scrollbar-webkit-none"
+          onClick={handleOnClick}
         >
           {children}
         </div>
