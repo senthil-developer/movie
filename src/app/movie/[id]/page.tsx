@@ -1,10 +1,10 @@
 import { DetailPage } from "@/components/detail-page";
 import { fetchData } from "@/components/fetchData";
 import { getImg } from "@/lib/utils";
-import { CardType, Params } from "../../../../types";
+import { Movie, Params } from "../../../../types";
 
 export async function generateMetadata({ params }: Params) {
-  const res = (await fetchData({ path: `movie/${params.id}` })) as CardType;
+  const res = (await fetchData({ path: `movie/${params.id}` })) as Movie;
   const url = getImg(res.poster_path, "original");
   return {
     title: `${res.title}`,

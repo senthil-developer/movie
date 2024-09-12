@@ -13,7 +13,7 @@ export const Explore = ({ type }: { type: "movie" | "tv" | "person" }) => {
 
   const [page, setPage] = useState<CardType[]>([]);
   const [pageNum, setPageNum] = useState(1);
-  const { getItem, addItem } = useFav();
+  const { getItem, addItem, removeItem } = useFav();
 
   useEffect(() => {
     if (inView) {
@@ -31,7 +31,7 @@ export const Explore = ({ type }: { type: "movie" | "tv" | "person" }) => {
       <div className="flex w-full flex-col pt-10">
         <section
           className="grid h-full w-full grid-cols-2 place-content-center place-items-center  md:grid-cols-3  lg:grid-cols-4 gap-4"
-          onClick={(e) => handleFavClick(e, getItem, addItem)}
+          onClick={(e) => handleFavClick(e, getItem, addItem, removeItem)}
         >
           {page?.map((item, i) => {
             return (

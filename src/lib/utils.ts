@@ -90,18 +90,21 @@ export const getVariants = (animateFrom: "x" | "y") => {
 export const handleFavClick = (
   e: MouseEvent<HTMLElement>,
   getItem: (id: string) => boolean,
-  addItem: (item: FavCardType) => void
+  addItem: (item: FavCardType) => void,
+  removeItem: (id: string) => void
 ) => {
   const target = e.target as HTMLElement;
   if (!target.getAttribute("data-id")) return;
 
-  const id = target.getAttribute("data-id");
+  const id = target.getAttribute("data-id") as string;
   const date = target.getAttribute("data-date");
   const poster = target.getAttribute("data-poster");
   const title = target.getAttribute("data-title");
   const type = target.getAttribute("data-type");
 
-  if (!getItem(id!)) {
+  if (getItem(id)) {
+    removeItem(id);
+  } else {
     addItem({
       id: id ? id.split("-")[1] : "",
       release_date: date!,

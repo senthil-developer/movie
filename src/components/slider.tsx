@@ -24,7 +24,7 @@ export const Slider = ({ children, className }: SliderProps) => {
     }
   };
 
-  const { getItem, addItem } = useFav();
+  const { getItem, addItem, removeItem } = useFav();
 
   return (
     <div className="relative">
@@ -40,7 +40,7 @@ export const Slider = ({ children, className }: SliderProps) => {
         <div
           ref={containerRef}
           className="flex gap-4 h-fit w-full overflow-x-auto scroll-smooth scrollbar-none scrollbar-webkit-none"
-          onClick={(e) => handleFavClick(e, getItem, addItem)}
+          onClick={(e) => handleFavClick(e, getItem, addItem, removeItem)}
         >
           {children}
         </div>
