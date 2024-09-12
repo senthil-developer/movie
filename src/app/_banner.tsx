@@ -17,6 +17,7 @@ export const Banner = () => {
       "original"
     )})`,
     backgroundSize: "cover",
+    backgroundPosition : "center",
   };
   return <div className="w-full h-[40rem]" style={backgroundStyle}></div>;
 };

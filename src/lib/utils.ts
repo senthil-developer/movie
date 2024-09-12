@@ -1,6 +1,8 @@
 import { type ClassValue, clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
 import { Person } from "../../types";
+import { MouseEvent } from "react";
+import { FavCardType } from "@/hooks/useStore";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -82,5 +84,37 @@ export const getVariants = (animateFrom: "x" | "y") => {
         hidden: { y: "30%", opacity: 0, filter: "blur(20px)" },
         visible: { y: 0, opacity: 1, filter: "blur(0px)" },
       };
+  }
+};
+
+export const handleFavClick = (
+  e: MouseEvent<HTMLElement>,
+  getItem: (id: string) => boolean,
+  addItem: (item: FavCardType) => void
+) => {
+  const target = e.target as HTMLElement;
+  if (!target.getAttribute("data-id")) return;
+
+  const id = target.getAttribute("data-id");
+  const date = target.getAttribute("data-date");
+  const poster = target.getAttribute("data-poster");
+  const title = target.getAttribute("data-title");
+  const type = target.getAttribute("data-type");
+
+  if (!getItem(id!)) {
+    addItem({
+      id: id ? id.split("-")[1] : "",
+      release_date: date!,
+      poster_path: poster!,
+      title: title!,
+      type: type as "movie" | "person" | "series",
+      backdrop_path: "",
+      first_air_date: "",
+      vote_average: 0,
+      profile_path: "",
+      name: "",
+      media_type: "",
+      favId: id,
+    });
   }
 };

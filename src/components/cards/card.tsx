@@ -7,7 +7,15 @@ import useFav from "@/hooks/useStore";
 import { Animate } from "../animate";
 
 interface CardProps {
-  item: CardType;
+  item: {
+    id: number;
+    poster_path: string;
+    release_date: string;
+    title: string;
+    name: string;
+    profile_path: string;
+    first_air_date: string;
+  };
   type: "movie" | "series" | "person";
   animateFrom: "x" | "y";
 }
@@ -48,8 +56,12 @@ const Card = ({ item, type, animateFrom }: CardProps) => {
               ? "bg-[#fed701] after:bg-inherit"
               : "bg-white after:bg-gray-800 "
           )}
-          title="Add to favorite"
+          title={isFav ? "Remove from favorite" : "Add to favorite"}
           data-id={`${type}-${item.id}`}
+          data-type={type}
+          data-poster={item.poster_path || item.profile_path}
+          data-title={item.title || item.name}
+          data-date={item.release_date || item.first_air_date}
         ></span>
       </div>
     </Animate>

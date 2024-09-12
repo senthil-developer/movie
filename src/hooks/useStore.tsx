@@ -1,22 +1,24 @@
-import create from "zustand";
+import { create } from "zustand";
+import { CardType } from "../../types";
 
-interface DataItem {
+export interface FavCardType extends Omit<CardType, "id"> {
+  favId: string | null;
   id: string;
+  type: "movie" | "series" | "person";
 }
-
 interface StoreState {
-  data: DataItem[];
-  loadData: () => void;
-  addItem: (item: DataItem) => void;
+  data: FavCardType[] | [];
+  getData: () => { data: FavCardType[] | [] };
+  addItem: (item: FavCardType) => void;
   clearData: () => void;
   getItem: (id: string) => boolean;
 }
 
 const useFav = create<StoreState>((set) => ({
   data: [],
-  loadData: () => {
+  getData: () => {
     const data = localStorage.getItem("data");
-    set({ data: data ? JSON.parse(data) : [] });
+    return { data: data ? JSON.parse(data) : [] };
   },
   addItem: (item) =>
     set((state) => {
@@ -31,7 +33,9 @@ const useFav = create<StoreState>((set) => ({
   getItem: (id) => {
     const data = localStorage.getItem("data");
 
-    return data && JSON.parse(data).find((item: DataItem) => item.id === id);
+    return (
+      data && JSON.parse(data).find((item: FavCardType) => item.favId === id)
+    );
   },
 }));
 

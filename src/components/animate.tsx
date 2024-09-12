@@ -16,7 +16,7 @@ export const Animate = ({ animatedFrom, children }: animateProps) => {
     if (isInView) {
       mainControls.start("visible");
     }
-  }, [isInView]);
+  }, [isInView, mainControls]);
 
   return (
     <motion.div
