@@ -17,10 +17,10 @@ interface CardProps {
     first_air_date: string;
   };
   type: "movie" | "series" | "person";
-  animateFrom: "x" | "y";
+  animateFrom?: "x" | "y";
 }
 
-const Card = ({ item, type, animateFrom }: CardProps) => {
+const Card = ({ item, type, animateFrom = 'x'}: CardProps) => {
   const { getItem } = useFav();
 
   const isFav = getItem(`${type}-${item.id}`);
