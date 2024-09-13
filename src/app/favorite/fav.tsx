@@ -6,7 +6,7 @@ import useFav from "@/hooks/useStore";
 import React from "react";
 import { CardType } from "../../../types";
 
-export const Fav = () => {
+ const Fav = () => {
   const { getData } = useFav();
   const { data } = getData();
   console.log(data);
@@ -24,3 +24,5 @@ export const Fav = () => {
     </section>
   );
 };
+
+export default Fav
