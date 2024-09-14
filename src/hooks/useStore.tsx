@@ -38,9 +38,10 @@ const useFav = create<StoreState>((set) => ({
   getItem: (id) => {
     const data = localStorage.getItem("data");
 
-    return (
-      data && JSON.parse(data).find((item: FavCardType) => item.favId === id)
-    );
+    if (data) {
+      return JSON.parse(data).some((item: FavCardType) => item.favId === id);
+    }
+    return false;
   },
   removeItem: (id) => {
     const data = localStorage.getItem("data");

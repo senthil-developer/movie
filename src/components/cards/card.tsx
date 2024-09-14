@@ -1,5 +1,5 @@
-import React from "react";
-import { CardType } from "../../../types";
+import { useEffect } from "react";
+
 import Image from "next/image";
 import Link from "next/link";
 import { cn, formatDate } from "@/lib/utils";
@@ -24,7 +24,9 @@ const Card = ({ item, type, animateFrom = "x" }: CardProps) => {
   const { getItem } = useFav();
 
   const isFav = getItem(`${type}-${item.id}`);
-
+  useEffect(() => {
+    console.log(isFav);
+  }, [isFav]);
   return (
     <Animate animatedFrom={animateFrom}>
       <div className="flex flex-col relative">
