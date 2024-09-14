@@ -62,7 +62,7 @@ const Card = ({ item, type, animateFrom }: CardProps) => {
           data-poster={item.poster_path || item.profile_path}
           data-title={item.title || item.name}
           data-date={item.release_date || item.first_air_date}
-        ></span>
+        />
       </div>
     </Animate>
   );
