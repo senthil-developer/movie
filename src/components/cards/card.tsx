@@ -20,7 +20,7 @@ interface CardProps {
   animateFrom?: "x" | "y";
 }
 
-const Card = ({ item, type, animateFrom = 'x'}: CardProps) => {
+const Card = ({ item, type, animateFrom = "x" }: CardProps) => {
   const { getItem } = useFav();
 
   const isFav = getItem(`${type}-${item.id}`);
@@ -51,7 +51,7 @@ const Card = ({ item, type, animateFrom = 'x'}: CardProps) => {
         </Link>
         <span
           className={cn(
-            "clip-path-star size-8 absolute top-1 right-1 inline-flex justify-center items-center after:size-full after:inset-[0] after:scale-75 after:clip-path-star cursor-pointer",
+            "clip-path-star size-8 absolute top-1 right-1 inline-flex justify-center items-center after:size-full after:inset-[0] after:scale-75 after:clip-path-star cursor-pointer transition-all duration-200",
             isFav
               ? "bg-[#fed701] after:bg-inherit"
               : "bg-white after:bg-gray-800 "
