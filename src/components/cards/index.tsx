@@ -15,7 +15,6 @@ import { Slider } from "../slider";
 interface type {
   path: string;
   type: "movie" | "series" | "person";
-  animatedFrom: "x" | "y";
 }
 
 const Cards = ({ path, type }: type) => {
