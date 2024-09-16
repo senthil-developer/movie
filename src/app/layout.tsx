@@ -14,7 +14,7 @@ export const metadata = {
   keywords:
     "movie,series,trending,person,history,movie universe,movie universe.vercel.app,latest movies,latest series,latest people,actor history,actress history,",
   openGraph: {
-    images: [`/logo1.png`],
+    images: [`/logo.png`],
   },
 };
 
@@ -24,7 +24,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body className={inter.className + " max-w-7xl mx-auto"}>
         <Provider>{children}</Provider>
       </body>

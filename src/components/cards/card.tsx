@@ -18,15 +18,10 @@ interface CardProps {
   };
   type: "movie" | "series" | "person";
   animateFrom?: "x" | "y";
+  isFav?: boolean;
 }
 
-const Card = ({ item, type, animateFrom = "x" }: CardProps) => {
-  const { getItem } = useFav();
-
-  const isFav = getItem(`${type}-${item.id}`);
-  useEffect(() => {
-    console.log(isFav);
-  }, [isFav]);
+const Card = ({ item, type, animateFrom = "x", isFav = false }: CardProps) => {
   return (
     <Animate animatedFrom={animateFrom}>
       <div className="flex flex-col relative">

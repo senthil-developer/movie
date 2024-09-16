@@ -11,6 +11,7 @@ import Card from "./card";
 import { useFetch } from "@/hooks/useFetch";
 import { CardsType, CardType } from "@/../types";
 import { Slider } from "../slider";
+import useFav from "@/hooks/useStore";
 
 interface type {
   path: string;
@@ -19,6 +20,8 @@ interface type {
 
 const Cards = ({ path, type }: type) => {
   const { data, isLoading, error } = useFetch<CardsType>({ path: path });
+
+  const { getItem, addItem, removeItem } = useFav();
 
   if (error) {
     return <div>Error: {error.message}</div>;
@@ -38,7 +41,13 @@ const Cards = ({ path, type }: type) => {
         </div>
       )}
       {data?.results.map((item: CardType) => (
-        <Card key={item.id} item={item} type={type} animateFrom="x" />
+        <Card
+          key={item.id}
+          item={item}
+          type={type}
+          animateFrom="x"
+          isFav={getItem(`${type}-${item.id}`)}
+        />
       ))}
     </Slider>
   );

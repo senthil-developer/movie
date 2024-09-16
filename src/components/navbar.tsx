@@ -1,11 +1,20 @@
 "use client";
 
 import { cn } from "@/lib/utils";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React from "react";
+import { FaFilm, FaHeart, FaHome, FaTv, FaUser } from "react-icons/fa";
+import { ThemeToggle } from "./theme-toggle";
 
-export const Navbar = ({ className }: { className: string }) => {
+export const Navbar = ({
+  className,
+  isMob = false,
+}: {
+  className: string;
+  isMob?: boolean;
+}) => {
   const pathname = usePathname();
   const active = () => {
     const link = pathname.split("/")[1];
@@ -26,29 +35,64 @@ export const Navbar = ({ className }: { className: string }) => {
   };
   const current = active();
   return (
-    <div className={cn(" z-20", className)}>
-      <div className="flex w-[60%] relative justify-center border-2 rounded-full border-[rgba(255,255,255,0.3)] p-1 backdrop-blur">
+    <nav className={cn(" z-20", className)}>
+      <div className="relative size-auto max-md:hidden">
+        <Link href="/">
+          <Image
+            src="/logo.png"
+            alt="logo"
+            width={30}
+            height={30}
+            style={{ objectFit: "cover", width: "30px", height: "30px" }}
+            className="h-auto w-auto rounded-lg"
+          />
+        </Link>
+      </div>
+      <ul
+        className={cn(
+          "flex relative justify-center",
+          isMob
+            ? "w-full justify-around py-2"
+            : "w-[60%] border-2 rounded-full border-[rgba(255,255,255,0.3)] p-1 backdrop-blur"
+        )}
+      >
         {navLinks.map((item) => (
-          <Link key={item.name} href={item.path} className="flex-1 text-center">
-            {item.name}
-          </Link>
+          <li
+            key={item.name}
+            className={cn(
+              "flex-1 text-center",
+              isMob && "flex items-center justify-center text-2xl"
+            )}
+          >
+            <Link href={item.path}>{isMob ? item.icon : item.name}</Link>
+            {isMob && <span className="sr-only">{item.name}</span>}
+          </li>
         ))}
         <span
-          className="absolute -z-10 w-[18%] h-[75%] bg-red-500 rounded-full left-1 transition-all duration-300"
+          className={cn(
+            "absolute -z-10 bg-red-500 transition-all duration-300",
+            isMob
+              ? "bottom-0 h-1 w-[20%]"
+              : "w-[18%] h-[75%] rounded-full left-1"
+          )}
           style={{
             left: `
-            ${current * 20 + 1}%`,
+            ${isMob ? current * 20 : current * 20 + 1}%`,
           }}
-        ></span>
+        />
+      </ul>
+
+      <div className="max-md:hidden">
+        <ThemeToggle />
       </div>
-    </div>
+    </nav>
   );
 };
 
 const navLinks = [
-  { name: "Home", path: "/" },
-  { name: "Movie", path: "/movie" },
-  { name: "Series", path: "/series" },
-  { name: "Person", path: "/person" },
-  { name: "Favorite", path: "/favorite" },
+  { name: "Home", path: "/", icon: <FaHome /> },
+  { name: "Movie", path: "/movie", icon: <FaFilm /> },
+  { name: "Series", path: "/series", icon: <FaTv /> },
+  { name: "Person", path: "/person", icon: <FaUser /> },
+  { name: "Favorite", path: "/favorite", icon: <FaHeart /> },
 ];

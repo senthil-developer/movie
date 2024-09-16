@@ -23,13 +23,12 @@ const useFav = create<StoreState>((set) => ({
   },
   addItem: (item) =>
     set((state) => {
-      const oldData = JSON.parse(localStorage.getItem("data")!);
       if (!state.getItem(item.id)) {
         const newData = [...state.data, item];
         localStorage.setItem("data", JSON.stringify(newData));
         return { data: newData };
       }
-      return { data: oldData };
+      return { data: state.data };
     }),
   clearData: () => {
     localStorage.removeItem("data");
