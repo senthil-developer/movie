@@ -9,7 +9,7 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 export const getImg = (
-  url: string,
+  url: string | undefined,
 
   q: ""
     | "w45"
