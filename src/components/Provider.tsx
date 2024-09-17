@@ -22,7 +22,7 @@ const Provider: React.FC<PropsWithChildren> = ({ children }) => {
         <header>
           <Navbar
             className={
-              "max-w-7xl mx-auto flex justify-evenly fixed top-0 w-full max-md:hidden"
+              "max-w-7xl mx-auto flex justify-between fixed top-0 w-full"
             }
           />
           <Navbar

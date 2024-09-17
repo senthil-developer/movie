@@ -8,7 +8,21 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
-export const getImg = (url?: string, q?: string) => {
+export const getImg = (
+  url?: string,
+
+  q: ""
+    | "w45"
+    | "w92"
+    | "w154"
+    | "w185"
+    | "w300"
+    | "w342"
+    | "w500"
+    | "w780"
+    | "w1280"
+    | "original"
+) => {
   return url ? `https://image.tmdb.org/t/p/${q}${url}` : "/placeholder.svg";
 };
 

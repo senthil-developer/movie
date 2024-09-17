@@ -151,3 +151,33 @@ export interface Person {
   popularity: number;
   profile_path: string;
 }
+
+export interface PersonImage {
+  id: number;
+  profiles: {
+    aspect_ratio: number;
+    height: number;
+    iso_639_1: string;
+    file_path: string;
+    vote_average: number;
+    vote_count: number;
+    width: number;
+  }[];
+}
+
+interface Image {
+  aspect_ratio: number;
+  height: number;
+  iso_639_1: string;
+  file_path: string;
+  vote_average: number;
+  vote_count: number;
+  width: number;
+}
+
+export interface DetailImage {
+  backdrops: Image[];
+  logos: Image[];
+  posters: Image[];
+  id: number;
+}

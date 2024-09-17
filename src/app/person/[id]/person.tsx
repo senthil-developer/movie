@@ -1,12 +1,15 @@
 "use client";
 
 import { useFetch } from "@/hooks/useFetch";
-import React, { use, useState } from "react";
-import { CardType, type Person as PersonType } from "../../../../types";
+import React, { useState } from "react";
+import { CardType, PersonImage, type Person as PersonType } from "../../../../types";
 import { cn, formatDate, getDept } from "@/lib/utils";
 import Image from "next/image";
 import { Slider } from "@/components/slider";
 import Card from "@/components/cards/card";
+import { getImg } from "@/lib/utils";
+import { DetailImage } from "@/../types";
+
 
 interface CombinedCredit {
   cast: CardType[];
@@ -76,6 +79,9 @@ export const Person = ({ id }: { id: string }) => {
           Read {viewMore ? "Less" : "More"}...
         </button>
       </div>
+      <p className="title">Images</p>
+      <Images id={id} />
+
       <p className="title">Known for</p>
       <Slider>
         {isLoading && (
@@ -98,5 +104,39 @@ export const Person = ({ id }: { id: string }) => {
         ))}
       </Slider>
     </div>
+  );
+};
+
+
+
+
+ const Images = ({ id }: { id: string }) => {
+  const { data: images, isLoading: isImagesLoading } = useFetch<PersonImage>({
+    path: `${id}/images`,
+  });
+
+  return (
+    <Slider className={"w-full h-full"}>
+      {isImagesLoading && (
+        <div className="flex gap-5">
+          {Array.from({ length: 10 }, (_, i) => (
+            <div key={i} className="size-52 bg-gray-400 animate-pulse" />
+          ))}
+        </div>
+      )}
+      {images?.profiles?.map((image) => (
+        <div
+          key={image.file_path}
+          className="size-52 h-full aspect-video relative"
+        >
+          <Image
+            src={getImg(image.file_path, "original")}
+            alt={`movies images`}
+            fill
+            className="object-cover w-full h-full"
+          />
+        </div>
+      ))}
+    </Slider>
   );
 };

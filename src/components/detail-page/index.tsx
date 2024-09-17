@@ -2,21 +2,12 @@
 
 import { useFetch } from "@/hooks/useFetch";
 import React from "react";
-import { CardsType, Movie, MovieCredits, Videos } from "@../../../types";
-import Image from "next/image";
-import {
-  formatAmt,
-  formatDate,
-  getImg,
-  hourToMins,
-  videoURL,
-} from "@/lib/utils";
-import { Slider } from "@/components/slider";
+import { Movie, Videos } from "@../../../types";
 import Cards from "@/components/cards";
-import Link from "next/link";
 import { Banner } from "./Banner";
 import { Cast } from "./Cast";
 import { Info } from "./Info";
+import { Images } from "./Images";
 
 interface DetailPageProps {
   id: string;
@@ -37,6 +28,9 @@ export const DetailPage = ({ id, type }: DetailPageProps) => {
       <Banner detail={detail!} videos={videos!} />
 
       <Info detail={detail!} type={type} />
+
+      <h2 className="title">Images</h2>
+      <Images id={id} />
 
       <h2 className="title">Top Cast</h2>
       <Cast id={id} />

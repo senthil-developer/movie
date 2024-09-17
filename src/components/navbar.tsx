@@ -36,24 +36,26 @@ export const Navbar = ({
   const current = active();
   return (
     <nav className={cn(" z-20", className)}>
-      <div className="relative size-auto max-md:hidden">
-        <Link href="/">
-          <Image
-            src="/logo.png"
-            alt="logo"
-            width={30}
-            height={30}
-            style={{ objectFit: "cover", width: "30px", height: "30px" }}
-            className="h-auto w-auto rounded-lg"
-          />
-        </Link>
-      </div>
+      {!isMob && (
+        <div className="relative size-auto">
+          <Link href="/">
+            <Image
+              src="/logo.png"
+              alt="logo"
+              width={30}
+              height={30}
+              style={{ objectFit: "cover", width: "30px", height: "30px" }}
+              className="h-auto w-auto rounded-lg"
+            />
+          </Link>
+        </div>
+      )}
       <ul
         className={cn(
           "flex relative justify-center",
           isMob
             ? "w-full justify-around py-2"
-            : "w-[60%] border-2 rounded-full border-[rgba(255,255,255,0.3)] p-1 backdrop-blur"
+            : "w-[60%] border-2 rounded-full border-[rgba(255,255,255,0.3)] p-1 backdrop-blur max-md:hidden"
         )}
       >
         {navLinks.map((item) => (
@@ -81,10 +83,7 @@ export const Navbar = ({
           }}
         />
       </ul>
-
-      <div className="max-md:hidden">
-        <ThemeToggle />
-      </div>
+      {!isMob && <ThemeToggle />}
     </nav>
   );
 };
