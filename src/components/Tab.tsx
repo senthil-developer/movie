@@ -19,20 +19,23 @@ export const Tab = ({ title, type, path }: TabType) => {
         <h2 className="title">{title}</h2>
         <div className="flex gap-4">
           <button
-            className={cn("p-1 px-2 rounded-md", !isWeek && "bg-yellow-300")}
+            className={cn("px-2 rounded-md", !isWeek && "bg-yellow-300")}
             onClick={() => setIsWeek(false)}
           >
             Day
           </button>
           <button
-            className={cn("p-1 px-2 rounded-md", isWeek && "bg-yellow-300")}
+            className={cn("px-2 rounded-md", isWeek && "bg-yellow-300")}
             onClick={() => setIsWeek(true)}
           >
             Week
           </button>
         </div>
       </div>
-      <Cards path={isWeek ? `${path}/week` : `${path}/day`} type={type} />
+      {isWeek ?  <Cards path={`${path}/week`} type={type} /> :  <Cards path={`${path}/day`} type={type} />
+      
+      }
+
     </div>
   );
 };
