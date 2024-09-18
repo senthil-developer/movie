@@ -19,5 +19,7 @@ export const Banner = () => {
     backgroundSize: "cover",
     backgroundPosition : "center",
   };
-  return <div className="w-full h-[40rem]" style={backgroundStyle}></div>;
+  return <div className="w-full h-[40rem] flex items-center justify-center" style={backgroundStyle}>
+<h1>MOVIE UNIVERSE</h1>
+</div>;
 };
