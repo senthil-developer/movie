@@ -2,14 +2,17 @@
 
 import { useFetch } from "@/hooks/useFetch";
 import React, { useState } from "react";
-import { CardType, PersonImage, type Person as PersonType } from "../../../../types";
+import {
+  CardType,
+  PersonImage,
+  type Person as PersonType,
+} from "../../../../types";
 import { cn, formatDate, getDept } from "@/lib/utils";
 import Image from "next/image";
 import { Slider } from "@/components/slider";
 import Card from "@/components/cards/card";
 import { getImg } from "@/lib/utils";
 import { DetailImage } from "@/../types";
-
 
 interface CombinedCredit {
   cast: CardType[];
@@ -37,11 +40,7 @@ export const Person = ({ id }: { id: string }) => {
       <div className="flex flex-col md:flex-row gap-10 justify-center items-center lg:w-[80%] lg:mx-auto">
         <div className="relative w-[11rem] aspect-[1.2/1.7] rounded-md">
           <Image
-            src={
-              person?.profile_path
-                ? `https://image.tmdb.org/t/p/original${person.profile_path}`
-                : "/placeholder.svg"
-            }
+            src={getImg(person?.profile_path, "original")}
             width={200}
             height={300}
             priority
@@ -107,10 +106,7 @@ export const Person = ({ id }: { id: string }) => {
   );
 };
 
-
-
-
- const Images = ({ id }: { id: string }) => {
+const Images = ({ id }: { id: string }) => {
   const { data: images, isLoading: isImagesLoading } = useFetch<PersonImage>({
     path: `${id}/images`,
   });

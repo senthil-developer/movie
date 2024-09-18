@@ -17,8 +17,8 @@ const Provider: React.FC<PropsWithChildren> = ({ children }) => {
     },
   });
   return (
-    <QueryClientProvider client={queryClient}>
-      <ThemeProvider enableSystem defaultTheme="system" attribute="class">
+    <ThemeProvider enableSystem defaultTheme="system" attribute="class">
+      <QueryClientProvider client={queryClient}>
         <header>
           <Navbar
             className={
@@ -33,7 +33,7 @@ const Provider: React.FC<PropsWithChildren> = ({ children }) => {
           />
         </header>
         <main className="max-w-7xl mx-auto max-xl:px-4">{children}</main>
-        <footer className="mb-14 mt-5 flex w-full flex-col">
+        <footer className="mt-5 flex max-w-7xl w-full mx-auto flex-col">
           <div className="flex items-center justify-evenly">
             {Links.map((link) => (
               <Link
@@ -50,8 +50,8 @@ const Provider: React.FC<PropsWithChildren> = ({ children }) => {
             movie-universe-nextjs@vercel.app &#169; 2024 All Rights Reserved
           </div>
         </footer>
-      </ThemeProvider>
-    </QueryClientProvider>
+      </QueryClientProvider>
+    </ThemeProvider>
   );
 };
 

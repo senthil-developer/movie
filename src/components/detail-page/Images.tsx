@@ -11,7 +11,7 @@ export const Images = ({ id }: { id: string }) => {
   });
 
   return (
-    <Slider className={"w-full h-full"}>
+    <Slider className={"w-full h-auto"}>
       {isImagesLoading && (
         <div className="flex gap-5">
           {Array.from({ length: 10 }, (_, i) => (
@@ -19,16 +19,19 @@ export const Images = ({ id }: { id: string }) => {
           ))}
         </div>
       )}
-      {images?.backdrops?.map((image) => (
+      {images?.backdrops?.map((image, i) => (
         <div
           key={image.file_path}
           className="size-52 h-full aspect-video relative"
         >
           <Image
             src={getImg(image.file_path, "original")}
-            alt={`movies images`}
+            alt={`movies image ` + i + 1}
             fill
-            className="object-cover w-full h-full"
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            className="object-cover"
+            placeholder="blur"
+            blurDataURL="/placeholder.svg"
           />
         </div>
       ))}
