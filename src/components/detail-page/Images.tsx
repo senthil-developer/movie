@@ -11,7 +11,7 @@ export const Images = ({ id }: { id: string }) => {
   });
 
   return (
-    <Slider className={"h-52"}>
+    <Slider>
       {isImagesLoading && (
         <div className="flex gap-5">
           {Array.from({ length: 10 }, (_, i) => (
