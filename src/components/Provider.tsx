@@ -33,7 +33,7 @@ const Provider: React.FC<PropsWithChildren> = ({ children }) => {
           />
         </header>
         <main className="max-w-7xl mx-auto max-xl:px-4">{children}</main>
-        <footer className="mt-5 max-md:mb-20 flex max-w-7xl w-full mx-auto flex-col">
+        <footer className="mt-5 max-md:mb-10 flex max-w-7xl w-full mx-auto flex-col">
           <div className="flex items-center justify-evenly">
             {Links.map((link) => (
               <Link
