@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import Cards from "./cards";
+import dynamic from 'next/dynamic';
 import { cn } from "@/lib/utils";
 
 interface TabType {
@@ -11,6 +11,8 @@ interface TabType {
 }
 
 export const Tab = ({ title, type, path }: TabType) => {
+  const Card = dynamic(() => import('./cards'));
+
   const [isWeek, setIsWeek] = useState(false);
 
   return (
