@@ -11,7 +11,7 @@ export const Images = ({ id }: { id: string }) => {
   });
 
   return (
-    <Slider className={"w-full h-auto"}>
+    <Slider className={"w-full h-52"}>
       {isImagesLoading && (
         <div className="flex gap-5">
           {Array.from({ length: 10 }, (_, i) => (
