@@ -39,7 +39,7 @@ export const Slider = ({ children, className }: SliderProps) => {
       <div className={cn("w-full overflow-hidden", className)}>
         <div
           ref={containerRef}
-          className="flex gap-4 h-fit w-full overflow-x-auto scroll-smooth scrollbar-none scrollbar-webkit-none"
+          className="flex gap-4 h-full w-full overflow-x-auto scroll-smooth scrollbar-none scrollbar-webkit-none"
           onClick={(e) => handleFavClick(e, getItem, addItem, removeItem)}
         >
           {children}
