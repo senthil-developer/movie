@@ -15,9 +15,9 @@ export const Tab = ({ title, type, path }: TabType) => {
 
   return (
     <div>
-      <div className="flex justify-between w-full">
+      <div className="flex justify-between w-full items-center">
         <h2 className="title">{title}</h2>
-        <div className="flex gap-4">
+        <div className="flex gap-4 items-center">
           <button
             className={cn("px-2 h-fit p-1 rounded-md", !isWeek && "bg-yellow-300")}
             onClick={() => setIsWeek(false)}
