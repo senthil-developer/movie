@@ -47,7 +47,7 @@ const Provider: React.FC<PropsWithChildren> = ({ children }) => {
             ))}
           </div>
           <div className="text-center">
-            movie-universe-nextjs@vercel.app &#169; 2024 All Rights Reserved
+            movie-universe-nextjs@vercel.app
           </div>
         </footer>
       </QueryClientProvider>
