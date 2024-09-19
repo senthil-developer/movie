@@ -27,7 +27,7 @@ export const Slider = ({ children, className }: SliderProps) => {
   const { getItem, addItem, removeItem } = useFav();
 
   return (
-    <div className="relative">
+    <div className="relative size-full">
       <Button pos={"left"} onClick={handlePrev} aria-label="Previous">
         &lt;
         <span className="sr-only">Previous Button</span>
