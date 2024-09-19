@@ -11,7 +11,7 @@ export const Images = ({ id }: { id: string }) => {
   });
 
   return (
-    <Slider className={"w-full h-52"}>
+    <Slider className={"h-52"}>
       {isImagesLoading && (
         <div className="flex gap-5">
           {Array.from({ length: 10 }, (_, i) => (
@@ -22,7 +22,7 @@ export const Images = ({ id }: { id: string }) => {
       {images?.backdrops?.map((image, i) => (
         <div
           key={image.file_path}
-          className="size-52 h-full relative"
+          className="size-52 relative"
         >
           <Image
             src={getImg(image.file_path, "original")}
