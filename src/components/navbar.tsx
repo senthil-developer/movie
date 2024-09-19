@@ -98,6 +98,6 @@ const navLinks = [
   { name: "Home", path: "/", icon: <GoHome size={25} />, current_icon: <FaHome size={25} /> },
   { name: "Movie", path: "/movie", icon: <BiMoviePlay size={25} />, current_icon: <BiSolidMoviePlay size={25} /> },
   { name: "Series", path: "/series", icon: <PiTelevisionSimple size={25} />, current_icon: <PiTelevisionSimpleFill size={25} /> },
-  { name: "Person", path: "/person", icon: <IoPersonOutline size={25} />, current_icon: <IoPersonSharp size={25} /> },
+  { name: "Person", path: "/person", icon: <IoPeopleOutline size={25} />, current_icon: <IoPeopleSharp size={25} /> },
   { name: "Favorite", path: "/favorite", icon: <TiStarOutline size={25} />, current_icon: <TiStarFullOutline size={25} /> }
 ];
