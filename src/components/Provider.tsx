@@ -47,7 +47,7 @@ const Provider: React.FC<PropsWithChildren> = ({ children }) => {
             ))}
           </div>
           <div className="text-center">
-            movie-universe-nextjs@vercel.app
+            movie-universe-nextjs.netlify.app
           </div>
         </footer>
       </QueryClientProvider>
