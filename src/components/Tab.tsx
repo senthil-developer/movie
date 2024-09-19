@@ -11,7 +11,7 @@ interface TabType {
 }
 
 export const Tab = ({ title, type, path }: TabType) => {
-  const Card = dynamic(() => import('./cards'));
+  const Cards = dynamic(() => import('./cards'));
 
   const [isWeek, setIsWeek] = useState(false);
 
