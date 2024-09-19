@@ -5,8 +5,14 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React from "react";
-import { FaFilm, FaHeart, FaHome, FaTv, FaUser } from "react-icons/fa";
 import { ThemeToggle } from "./theme-toggle";
+
+import { GoHome } from "react-icons/go";
+import { FaHome } from "react-icons/fa";
+import { BiMoviePlay, BiSolidMoviePlay } from "react-icons/bi";
+import { IoPeopleOutline, IoPeopleSharp } from "react-icons/io5";
+import { PiTelevisionSimple, PiTelevisionSimpleFill } from "react-icons/pi";
+import { TiStarFullOutline,TiStarOutline } from "react-icons/ti";
 
 export const Navbar = ({
   className,
@@ -66,7 +72,7 @@ export const Navbar = ({
               isMob && "flex items-center justify-center text-2xl"
             )}
           >
-            <Link href={item.path}>{isMob ? item.icon : item.name}</Link>
+            <Link href={item.path}>{isMob ? current === i ? item.current_icon : item.icon : item.name}</Link>
             {isMob && <span className="sr-only">{item.name}</span>}
           </li>
         ))}
@@ -89,9 +95,9 @@ export const Navbar = ({
 };
 
 const navLinks = [
-  { name: "Home", path: "/", icon: <FaHome /> },
-  { name: "Movie", path: "/movie", icon: <FaFilm /> },
-  { name: "Series", path: "/series", icon: <FaTv /> },
-  { name: "Person", path: "/person", icon: <FaUser /> },
-  { name: "Favorite", path: "/favorite", icon: <FaHeart /> },
+  { name: "Home", path: "/", icon: <GoHome size={25} />, current_icon: <FaHome size={25} /> },
+  { name: "Movie", path: "/movie", icon: <BiMoviePlay size={25} />, current_icon: <BiSolidMoviePlay size={25} /> },
+  { name: "Series", path: "/series", icon: <PiTelevisionSimple size={25} />, current_icon: <PiTelevisionSimpleFull size={25} /> },
+  { name: "Person", path: "/person", icon: <IoPersonOutline size={25} />, current_icon: <IoPersonSharp size={25} /> },
+  { name: "Favorite", path: "/favorite", icon: <TiStarOutline size={25} />, current_icon: <TiStarFullOutline size={25} /> }
 ];
