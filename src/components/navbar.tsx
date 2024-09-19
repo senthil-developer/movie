@@ -64,7 +64,7 @@ export const Navbar = ({
             : "w-[60%] border-2 rounded-full border-[rgba(255,255,255,0.3)] p-1 backdrop-blur max-md:hidden"
         )}
       >
-        {navLinks.map((item) => (
+        {navLinks.map((item,i) => (
           <li
             key={item.name}
             className={cn(
