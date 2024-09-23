@@ -15,14 +15,14 @@ export const Images = ({ id }: { id: string }) => {
       {isImagesLoading && (
         <div className="flex gap-5">
           {Array.from({ length: 10 }, (_, i) => (
-            <div key={i} className="size-52 bg-gray-400 animate-pulse" />
+            <div key={i} className="w-52 bg-gray-400 animate-pulse aspect-video" />
           ))}
         </div>
       )}
       {images?.backdrops?.map((image, i) => (
         <div
           key={image.file_path}
-          className="size-52 relative flex-shrink-0 aspect-video"
+          className="w-52 relative flex-shrink-0 aspect-video"
         >
           <Image
             src={getImg(image.file_path, "original")}
