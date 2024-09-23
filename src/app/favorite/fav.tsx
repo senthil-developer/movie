@@ -32,7 +32,7 @@ import {handleFavClick} from '@/lib/utils';
           item={{ ...item, id: Number(item.id) }}
           type={item.type}
           animateFrom="y"
-          isFav={getItem(`${type}-${item.id}`)}
+          isFav={getItem(`${item.type}-${item.id}`)}
         />
       ))}
     </section>
