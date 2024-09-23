@@ -22,14 +22,14 @@ export const Images = ({ id }: { id: string }) => {
       {images?.backdrops?.map((image, i) => (
         <div
           key={image.file_path}
-          className="size-52 relative"
+          className="size-52 relative h-full"
         >
           <Image
             src={getImg(image.file_path, "original")}
             alt={`movies image ` + (i + 1)}
             fill
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-            className="object-cover"
+            className="object-cover size-full"
             placeholder="blur"
             blurDataURL="/placeholder.svg"
           />
