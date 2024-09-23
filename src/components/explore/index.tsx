@@ -40,6 +40,7 @@ export const Explore = ({ type }: { type: "movie" | "tv" | "person" }) => {
                 item={item}
                 type={type === "tv" ? "person" : type}
                 animateFrom="y"
+                isFav={getItem(`${type}-${item.id}`)}
               />
             );
           })}
