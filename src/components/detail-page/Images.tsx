@@ -22,7 +22,7 @@ export const Images = ({ id }: { id: string }) => {
       {images?.backdrops?.map((image, i) => (
         <div
           key={image.file_path}
-          className="size-52 relative h-full"
+          className="size-52 relative"
         >
           <Image
             src={getImg(image.file_path, "original")}
