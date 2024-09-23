@@ -12,7 +12,7 @@ import { CardType } from "../../../types";
 
   if(data.length < 1){
    return(
-     <div className="flex h-[90dvh] w-full justify-center items-center">
+     <div className="flex h-[89dvh] w-full justify-center items-center">
      <h1>
      No Favorites.
      </h1>
@@ -21,7 +21,7 @@ import { CardType } from "../../../types";
   }
   
   return (
-    <section className="grid min-h-[90dvh] w-full grid-cols-2 place-content-center place-items-center  md:grid-cols-3  lg:grid-cols-4 gap-4">
+    <section className="grid min-h-[89dvh] w-full grid-cols-2 place-content-center place-items-center  md:grid-cols-3  lg:grid-cols-4 gap-4">
       {data.map((item, i) => (
         <Card
           key={i}
