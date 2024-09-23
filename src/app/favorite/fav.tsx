@@ -9,8 +9,15 @@ import { CardType } from "../../../types";
  const Fav = () => {
   const { getData } = useFav();
   const { data } = getData();
-  console.log(data);
 
+  if(data.length < 1){
+   return(
+     <div class="flex h-full w-full justify-center items-center">
+     No Favorites...
+     </div>
+   )
+  }
+  
   return (
     <section className="grid h-full w-full grid-cols-2 place-content-center place-items-center  md:grid-cols-3  lg:grid-cols-4 gap-4">
       {data.map((item, i) => (
