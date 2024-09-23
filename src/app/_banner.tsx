@@ -20,6 +20,6 @@ export const Banner = () => {
     backgroundPosition : "center",
   };
   return <div className="w-full h-[40rem] flex items-center justify-center" style={backgroundStyle}>
-<h1 className='bg-gradient-to-r from-purple-500  via-violet-500 to-yellow-500  bg-clip-text text-transparent font-bold text-3xl'>Welcome to MOVIE UNIVERSE</h1>
+<h1 className='bg-gradient-to-r from-purple-500  via-violet-500 to-yellow-500  bg-clip-text text-transparent font-bold text-3xl text-center'>Welcome to MOVIE UNIVERSE</h1>
 </div>;
 };
