@@ -11,7 +11,6 @@ const Fav = dynamic(() => import("./fav"), { ssr: false });
 
   return (
     <div className="flex h-full w-full flex-col items-center justify-center">
-      <h1 className=""> Favorite page </h1>
       <Fav />
     </div>
   );
