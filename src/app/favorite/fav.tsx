@@ -5,7 +5,7 @@ import useFav from "@/hooks/useStore";
 
 import React from "react";
 import { CardType } from "../../../types";
-
+import {handleFavClick} from '@/lib/utils';
 
 
  const Fav = () => {
