@@ -6,10 +6,14 @@ import useFav from "@/hooks/useStore";
 import React from "react";
 import { CardType } from "../../../types";
 
+
+
  const Fav = () => {
-  const { getData } = useFav();
+  const { getData , getItem,addItem,removeItem} = useFav();
   const { data } = getData();
 
+  
+  
   if(data.length < 1){
    return(
      <div className="flex h-[89dvh] w-full justify-center items-center">
@@ -21,13 +25,14 @@ import { CardType } from "../../../types";
   }
   
   return (
-    <section className="grid min-h-[89dvh] w-full grid-cols-2 place-content-center place-items-center  md:grid-cols-3  lg:grid-cols-4 gap-4">
+    <section className="grid min-h-[89dvh] w-full grid-cols-2 place-content-center place-items-center  md:grid-cols-3  lg:grid-cols-4 gap-4" onClick={(e) => handleFavClick(e, getItem, addItem, removeItem)}>
       {data.map((item, i) => (
         <Card
           key={i}
           item={{ ...item, id: Number(item.id) }}
           type={item.type}
           animateFrom="y"
+          isFav={getItem(`${type}-${item.id}`)}
         />
       ))}
     </section>
