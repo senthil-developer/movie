@@ -12,7 +12,7 @@ import { CardType } from "../../../types";
 
   if(data.length < 1){
    return(
-     <div class="flex h-full w-full justify-center items-center">
+     <div className="flex h-full w-full justify-center items-center">
      No Favorites...
      </div>
    )
