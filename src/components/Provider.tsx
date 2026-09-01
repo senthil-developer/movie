@@ -62,18 +62,18 @@ const Links = [
     id: 1,
     icon: <IoLogoGithub />,
     social: "Github",
-    link: "https://github.com/senthil-developer/movie",
+    link: "https://github.com/senthil-karthikeyan/movie",
   },
   {
     id: 2,
     icon: <IoLogoLinkedin />,
     social: "Linkedin",
-    link: "https://linkedin.com/in/senthil-developer",
+    link: "https://linkedin.com/in/senthil-karthikeyan",
   },
   {
     id: 3,
     icon: <IoIosMail />,
     social: "Email",
-    link: "mailto:senthildeveloper4@gmail.com",
+    link: "mailto:senthil.karthikeyan.official@gmail.com",
   },
 ];
